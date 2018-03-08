@@ -36,6 +36,7 @@ def reduce(combiner, seq):
     for i in range(1,len(seq)):
         ans=combiner(ans,seq[i])
     return ans
+
 # pyTunes
 def make_pytunes(username):
     """Return a pyTunes tree as shown in the diagram with USERNAME as the value
@@ -54,7 +55,15 @@ def make_pytunes(username):
           sandstorm
     """
     "*** YOUR CODE HERE ***"
-
+    return tree(username,
+            [tree('pop',
+                [tree('justin bieber',
+                    [tree('single',
+                        [tree('what do you mean?')])],),
+                tree('2015 pop mashup')]),
+            tree('trance',
+                [tree('darude',
+                    [tree('sandstorm')])])]) 
 def num_songs(t):
     """Return the number of songs in the pyTunes tree, t.
 
@@ -66,7 +75,14 @@ def num_songs(t):
     1
     """
     "*** YOUR CODE HERE ***"
+    """judge how many child t hava"""
+    if is_leaf(t):
+        return 1
+    else:
+        return sum(num_songs(b) for b in branches(t))
 
+
+    
 # Tree ADT
 # Tree definition
 
